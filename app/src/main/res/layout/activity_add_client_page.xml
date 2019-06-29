@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:padding="5dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <TextView
+        android:id="@+id/formTitle"
+        android:textColor="#FF2D00"
+        android:textAlignment="center"
+        android:text="Add new client"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textAlignment="center"
+        android:text="*************************"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:text="prashant bhat"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:hint="Enter Name"
+        android:id="@+id/client_name"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:text="8796238220"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimary"
+        android:hint="10 digit mobile number"
+        android:textAlignment="center"
+        android:id="@+id/client_mobile"
+        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Spinner
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:id="@+id/client_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/sex"/>
+
+    <Spinner
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:id="@+id/client_package"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/packages"/>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"
+            android:id="@+id/selectDateButton"
+            android:text="Select Start Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:enabled="false"
+            android:layout_gravity="center"
+            android:text="DD / MM / YYYY"
+            android:id="@+id/selectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+
+        android:enabled="true"
+        android:id="@+id/addClientButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="#000000"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="ADD CLIENT"
+        android:textColor="#fff"
+        android:layout_marginBottom="50dp"/>
+
+</LinearLayout>

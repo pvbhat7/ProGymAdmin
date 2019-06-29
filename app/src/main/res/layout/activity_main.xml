@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<LinearLayout
+    android:layout_centerInParent="true"
+    android:layout_marginTop="100dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/addClient"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:textColor="#fff"
+            android:text="Add Client" />
+
+        <Button
+            android:layout_marginLeft="30dp"
+            android:id="@+id/viewClients"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:textColor="#fff"
+            android:text="View Clients" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/sendFeesRemainders"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:textColor="#fff"
+            android:text="Send Fees Remainders" />
+        <Button
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/viewCollections"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:textColor="#fff"
+            android:text="View Collections" />
+    </LinearLayout>
+</LinearLayout>
+
+</RelativeLayout>

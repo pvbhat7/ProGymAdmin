@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ProGymAdmin</string>
+
+    <string-array name="sex">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="packages">
+        <item>Select Package</item>
+        <item>MALE -> (GYM) 1 Month = Rs.500 #01</item>
+        <item>MALE -> (GYM) 3 Month = Rs.1,200 #02</item>
+        <item>MALE -> (GYM) 6 Month = Rs.2,300 #03</item>
+        <item>MALE -> (GYM) 1 Year = Rs.4,200 #04</item>
+        <item>MALE -> (GYM + CARDIO)  1 Month = Rs.800 #05</item>
+        <item>MALE -> (GYM + CARDIO)  3 Month = Rs.2,100 #06</item>
+        <item>MALE -> (GYM + CARDIO)  6 Month = Rs.4,000 #07</item>
+        <item>MALE -> (GYM + CARDIO)  1 Year = Rs.7,000 #08</item>
+        <item>FEMALE -> (GYM) 1 Month = Rs.800 #09</item>
+        <item>FEMALE -> (GYM) 3 Month = Rs.2,300 #10</item>
+        <item>FEMALE -> (GYM) 6 Month = Rs.4,300 #11</item>
+        <item>FEMALE -> (GYM) 1 Year = Rs.8,000 #12</item>
+        <item>FEMALE -> (COUPLE PKG) 3 Month = Rs.4,500 #13</item>
+        <item>FEMALE -> (COUPLE PKG) 6 Month = Rs.8,500 #14</item>
+        <item>FEMALE -> (COUPLE PKG) 1 Year = Rs.16,000 #15</item>
+    </string-array>
+
+
+</resources>

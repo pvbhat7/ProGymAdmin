@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@+id/clientSinglePackage" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="25dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginTop="8.0dip"
+        android:layout_marginRight="5.0dip"
+        app:cardElevation="0.5dip"
+        app:cardUseCompatPadding="true">
+        <RelativeLayout android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@+id/ll_" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toStartOf="@+id/layout_controls" android:layout_toLeftOf="@+id/layout_controls" >
+                <TextView android:textColor="@color/colorBlack" android:layout_marginBottom="10dp" android:layout_gravity="center" android:text="Package" android:textSize="14.0sp" android:textStyle="bold" android:ellipsize="end" android:id="@+id/list_packageName" android:layout_width="wrap_content" android:layout_height="wrap_content"  />
+
+
+                <LinearLayout android:orientation="horizontal" android:id="@+id/layout_price" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date :" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorBlue" android:id="@+id/list_PackageStartDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="21/06/2019" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_marginLeft="10.0dip" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorBlue" android:id="@+id/txt_out_stock88" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="to" android:layout_centerVertical="true" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorBlue" android:id="@+id/list_PackageEndDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="21/06/2019" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_marginLeft="10.0dip" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@+id/layout_price1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Payment Status :" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorBlue" android:id="@+id/list_paymentStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NOT PAID  " android:layout_centerVertical="true" android:layout_marginStart="35.0dip" android:layout_marginLeft="35.0dip" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@+id/layout_price12" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Days Remaining :" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorBlue" android:id="@+id/list_PackageDaysRemaining" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 Days" android:layout_centerVertical="true" android:layout_marginStart="35.0dip" android:layout_marginLeft="35.0dip" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@+id/layout_price123" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fees Paid :" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorGreen" android:id="@+id/list_PackageAmountPaid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 200 " android:layout_centerVertical="true" android:layout_marginStart="65.0dip" android:layout_marginLeft="65.0dip" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@+id/layout_price132" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fees Remaining :" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorAccent" android:id="@+id/list_PackageAmountRemaining" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 500 " android:layout_centerVertical="true" android:layout_marginStart="35.0dip" android:layout_marginLeft="35.0dip" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:gravity="center" android:id="@+id/layout_controls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="false" android:layout_alignParentEnd="true" android:layout_alignParentRight="true">
+                <Button android:textSize="10.0sp" android:id="@+id/list_payFeesButton" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="PAY" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" style="@style/Widget.AppCompat.Button.Colored" />
+                <Button android:textSize="10.0sp" android:id="@+id/list_SendSmsRemainderButton" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="SEND REMAINDER" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" style="@style/Widget.AppCompat.Button.Colored" />
+                <Button android:textSize="10.0sp" android:id="@+id/list_UpdatePackageButton" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="UPDATE PACKAGE" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" style="@style/Widget.AppCompat.Button.Colored" />
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>

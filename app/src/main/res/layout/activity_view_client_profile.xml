@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewClientProfile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:src="@drawable/pranav"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/singleProfile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+        <TableLayout
+            android:layout_below="@+id/singleProfile_image"
+            android:id="@+id/table"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/nameLinear"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginRight="100dp"
+                        android:textAlignment="center"
+                        android:text="Name :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/singleProfile_name"
+                        android:textAlignment="center"
+                        android:text="PRASHANT BHAT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+            <TableRow>
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/nameLinear"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginRight="100dp"
+                        android:textAlignment="center"
+                        android:text="Mobile :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/singleProfile_mobile"
+                        android:textAlignment="center"
+                        android:text="8796238220"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+            <TableRow>
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/nameLinear"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginRight="50dp"
+                        android:textAlignment="center"
+                        android:text="Account Status :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/singleProfile_accountStatus"
+                        android:textColor="#00FF2D"
+                        android:textAlignment="center"
+                        android:text="ACTIVE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+            <TableRow>
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/nameLinear"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginRight="100dp"
+                        android:textAlignment="center"
+                        android:text="Gender :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/singleProfile_gender"
+                        android:textAlignment="center"
+                        android:text="Male"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+
+
+
+        </TableLayout>
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/table"
+            android:id="@+id/singleProfile_addpackage"
+            android:enabled="true"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="ADD PACKAGE"
+            android:textColor="#fff" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/singleProfile_addpackage"
+            android:id="@+id/viewClientProfile_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
