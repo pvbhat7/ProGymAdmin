@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewClientProfile"></activity>
+        <activity android:name=".ViewCollections"></activity>
+        <activity android:name=".ViewClientProfile" />
         <activity android:name=".ViewClientPage" />
         <activity android:name=".AddClientPage" />
         <activity android:name=".MainActivity">

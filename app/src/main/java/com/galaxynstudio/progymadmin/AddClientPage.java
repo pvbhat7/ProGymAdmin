@@ -23,14 +23,15 @@ import java.util.List;
 
 public class AddClientPage extends AppCompatActivity implements View.OnClickListener{
 
-    Button selectDateButton,addClientButton;
+    Button selectDateButton,addClientButton,removeClientPackageButton;
     DatePickerDialog picker;
     EditText selectedDate,clientName,clientMobile;
     Spinner clientGender,clientPackage;
     Boolean isClientPresent=false;
     int clientId=0;
     String gender_i,parentcommand;
-    TextView formTitle;
+    TextView formTitle,client_currentPackage,currentPkgLabel;
+    int clientPackageDetailsId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,12 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
                     addClientButton.setText("UPDATE PACKAGE");
                     formTitle.setText("Update package Page");
                     selectedDate.setText(intent.getStringExtra("clientPackageStartDate"));
+                    currentPkgLabel.setVisibility(View.VISIBLE);
+                    client_currentPackage.setVisibility(View.VISIBLE);
+                    client_currentPackage.setText(intent.getStringExtra("clientPackageCurrent"));
+                    clientPackageDetailsId=intent.getIntExtra("clientPackageDetailsId",0);
+                    removeClientPackageButton.setVisibility(View.VISIBLE);
+
                 }else if(parentcommand.equals("addPkgToExistingClient")){
                     addClientButton.setText("ADD PACKAGE");
                     formTitle.setText("Add package Page");
@@ -81,6 +88,8 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
         clientPackage=findViewById(R.id.client_package);
 
         formTitle=findViewById(R.id.formTitle);
+        client_currentPackage=findViewById(R.id.client_currentPackage);
+        currentPkgLabel=findViewById(R.id.client_currentPackageLabel);
         //date
         selectDateButton=findViewById(R.id.selectDateButton);
         selectDateButton.setOnClickListener(this);
@@ -88,6 +97,9 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
 
         addClientButton=findViewById(R.id.addClientButton);
         addClientButton.setOnClickListener(this);
+
+        removeClientPackageButton=findViewById(R.id.removeClientPackageButton);
+        removeClientPackageButton.setOnClickListener(this);
     }
 
     @Override
@@ -116,7 +128,7 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
 
                     if(parentcommand.equals("updatePkgToExistingClient")){
                         // UPDATE EXISTING PACKAGE
-                        updateExistingPackage();
+                        updateExistingPackage(clientId,clientPackageDetailsId);
                     }else if(parentcommand.equals("addPkgToExistingClient")){
                         // ADD NEW PACKAGE
                         addNewpackage();
@@ -131,26 +143,37 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
                     client.setMobile(clientMobile.getText().toString().trim());
                     client.setSex(((TextView)clientGender.getSelectedView()).getText().toString().trim());
                     client.setClientStatus("active");
+                    Long clientId=DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
+                            .clientDao().insert(client);
 
                     // create package
-                    List<PackageDetails> list=new ArrayList<>();
                     PackageDetails packageDetails=new PackageDetails();
                     packageDetails.setStatus("Not Paid");
                     packageDetails.setAmountPaid(0.00);
                     packageDetails.setStartDate(selectedDate.getText().toString().trim());
                     packageDetails.setcPackage(getPackageByHashing(((TextView)clientPackage.getSelectedView()).getText().toString().trim(),((TextView)clientGender.getSelectedView()).getText().toString().trim()));
+                    packageDetails.setCliendId(clientId.intValue());
+                    DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
+                            .packageDetailsDao().insert(packageDetails);
 
-                    list.add(packageDetails);
-                    client.setPackageDetails(list);
 
                     // save to db
-                    DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                            .clientDao().insert(client);
+
                     Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(AddClientPage.this,MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
+                break;
+
+            case R.id.removeClientPackageButton:
+                PackageDetails packageDetails=DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().packageDetailsDao().getPackageDetailsByClientIdAndPackageId(clientId,clientPackageDetailsId);
+                DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().packageDetailsDao().delete(packageDetails);
+                Toast.makeText(this, "Package Removed", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(this,ViewClientProfile.class);
+                intent.putExtra("clientId",clientId);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
                 break;
         }
 
@@ -158,9 +181,6 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
     }
 
     public void addNewpackage(){
-        Client client= DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().clientDao().getClient(clientId);
-        List<PackageDetails> list=DataTypeConverter.stringToList(DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                .clientDao().getClientPackageDetailsById(clientId));
 
 
         PackageDetails packageDetails=new PackageDetails();
@@ -168,20 +188,27 @@ public class AddClientPage extends AppCompatActivity implements View.OnClickList
         packageDetails.setStatus("Not Paid");
         packageDetails.setAmountPaid(0.00);
         packageDetails.setcPackage(getPackageByHashing(((TextView)clientPackage.getSelectedView()).getText().toString().trim(),gender_i));
-        list.add(packageDetails);
-        client.setPackageDetails(list);
+        packageDetails.setCliendId(clientId);
         DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                .clientDao().updateClient(clientId,list);
+                .packageDetailsDao().insert(packageDetails);
         Intent intent=new Intent(this,ViewClientProfile.class);
         intent.putExtra("clientId",clientId);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
-    public void updateExistingPackage(){
-        Client client= DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().clientDao().getClient(clientId);
-        List<PackageDetails> list=DataTypeConverter.stringToList(DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                .clientDao().getClientPackageDetailsById(clientId));
+    public void updateExistingPackage(int cId, int pId){
+        PackageDetails packageDetails= DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().packageDetailsDao().getPackageDetailsByClientIdAndPackageId(cId,pId);
+        packageDetails.setcPackage(getPackageByHashing(((TextView)clientPackage.getSelectedView()).getText().toString().trim(),gender_i));
+        packageDetails.setStartDate(selectedDate.getText().toString().trim());
+        packageDetails.setAmountPaid(0.00);
+        packageDetails.setStatus("Not Paid");
+        DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().packageDetailsDao().update(packageDetails);
+        Toast.makeText(this, "PackageUpdated", Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(this,ViewClientProfile.class);
+        intent.putExtra("clientId",clientId);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
 
 
     }

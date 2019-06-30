@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewCollections">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/labell"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="VIEW COLLECTIONS PAGE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/linmonyear"
+            android:layout_below="@+id/labell"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:id="@+id/year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/collectionYears"/>
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:id="@+id/month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/collectionMonths"/>
+        </LinearLayout>
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/linmonyear"
+            android:visibility="visible"
+            android:enabled="true"
+            android:id="@+id/viewCustomCollectionButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="VIEW COLLECTION"
+            android:textColor="#fff"
+            android:layout_marginBottom="25dp"/>
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/viewCustomCollectionButton"
+            android:visibility="visible"
+            android:enabled="true"
+            android:id="@+id/viewTotalCollectionButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="VIEW TOTAL COLLECTION"
+            android:textColor="#fff"
+            android:layout_marginBottom="70dp"/>
+
+        <TextView
+            android:id="@+id/collectionAmount"
+            android:textSize="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/viewTotalCollectionButton"
+            android:text="Rs. 0.0 "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

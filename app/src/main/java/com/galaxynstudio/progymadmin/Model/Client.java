@@ -21,9 +21,6 @@ public class Client {
     @ColumnInfo(name = "mobile")
     String mobile;
 
-    @TypeConverters(DataTypeConverter.class)
-    @ColumnInfo(name = "packageDetails")
-    List<PackageDetails> packageDetails;
 
     @ColumnInfo(name = "clientStatus")
     String clientStatus;
@@ -43,9 +40,7 @@ public class Client {
         this.mobile = mobile;
     }
 
-    public void setPackageDetails(List<PackageDetails> packageDetails) {
-        this.packageDetails = packageDetails;
-    }
+
 
     public void setClientStatus(String clientStatus) {
         this.clientStatus = clientStatus;
@@ -67,9 +62,7 @@ public class Client {
         return mobile;
     }
 
-    public List<PackageDetails> getPackageDetails() {
-        return packageDetails;
-    }
+
 
     public String getClientStatus() {
         return clientStatus;
@@ -85,7 +78,6 @@ public class Client {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", packageDetails=" + packageDetails +
                 ", clientStatus='" + clientStatus + '\'' +
                 ", sex='" + sex + '\'' +
                 '}';

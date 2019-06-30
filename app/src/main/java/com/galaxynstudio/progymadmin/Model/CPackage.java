@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class CPackage {
 
     @PrimaryKey(autoGenerate = true)
-    private Integer packageId;
+    private int packageId;
 
     @ColumnInfo(name = "fees")
     Double fees;

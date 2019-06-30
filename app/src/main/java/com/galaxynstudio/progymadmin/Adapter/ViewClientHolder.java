@@ -16,6 +16,7 @@ public class ViewClientHolder extends RecyclerView.ViewHolder implements
     // View holder for list recycler view as we used in listview
     TextView clientNameList,clientPackageList,clientPackageStartdate,clientPackageDaysLeft,clientFeesStatus;
     public RelativeLayout listLayout;
+    LinearLayout pkg_details,fee_status,pkg_notFound;
     ImageView image;
 
 
@@ -35,6 +36,10 @@ public class ViewClientHolder extends RecyclerView.ViewHolder implements
         this.listLayout = (RelativeLayout) view.findViewById(R.id.rl_root);
         this.image=view.findViewById(R.id.profile_pic);
         this.listLayout.setOnClickListener(this);
+
+        pkg_details=view.findViewById(R.id.pkg_details);
+        fee_status=view.findViewById(R.id.pkg_fee_status);
+        pkg_notFound=view.findViewById(R.id.noPackageFound);
     }
 
     @Override

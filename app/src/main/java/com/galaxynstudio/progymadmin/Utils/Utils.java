@@ -111,8 +111,48 @@ public class Utils {
         PendingIntent sentPI;
         String SENT = "SMS_SENT";
         sentPI = PendingIntent.getBroadcast(context, 0,new Intent(SENT), 0);
-        sms.sendTextMessage(c.getMobile(), null, "ProGym Kalamba,Kolhapur\nHello "+c.getName()+",\nYour Package "+c.getPackageName()+" will expire on "+c.getPackageEndDate()+". Kindly pay remaining fees :Rs. "+c.getRemainingFees()+"/-", sentPI, null);
+        sms.sendTextMessage(c.getMobile(), null, "ProGym Kalamba,Kolhapur\nHello "+c.getName()+",\nYour Package ( "+c.getPackageName()+" ) will expire on "+c.getPackageEndDate()+". Kindly pay remaining fees :Rs. "+c.getRemainingFees()+"/-", sentPI, null);
     }
 
 
+    public static String getMonthStringFromDateString(String paymentDate) {
+        String month=null;
+        String date=paymentDate;
+        String[] str=date.split("/");
+
+        int monthInt=Integer.parseInt(str[1]);
+        if (monthInt == 1)
+            month="January";
+        else if (monthInt == 2)
+            month="February";
+        else if (monthInt == 3)
+            month="March";
+        else if (monthInt == 4)
+            month="April";
+        else if (monthInt == 5)
+            month="May";
+        else if (monthInt == 6)
+            month="June";
+        else if (monthInt == 7)
+            month="July";
+        else if (monthInt == 8)
+            month="August";
+        else if (monthInt == 9)
+            month="September";
+        else if (monthInt == 10)
+            month="October";
+        else if (monthInt == 11)
+            month="November";
+        else if (monthInt == 12)
+            month="December";
+
+        return month;
+    }
+
+    public static String getYearStringFromDateString(String paymentDate) {
+        String date=paymentDate;
+        String[] str=date.split("/");
+        int year=Integer.parseInt(str[2]);
+        return String.valueOf(year);
+    }
 }

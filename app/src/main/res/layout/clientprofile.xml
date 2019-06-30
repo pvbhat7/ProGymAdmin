@@ -34,9 +34,13 @@
                     <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fees Paid :" android:layout_centerVertical="true" />
                     <TextView android:textSize="12.0sp" android:textColor="@color/colorGreen" android:id="@+id/list_PackageAmountPaid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 200 " android:layout_centerVertical="true" android:layout_marginStart="65.0dip" android:layout_marginLeft="65.0dip" />
                 </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@+id/layout_price132" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@+id/feeRemainingLayout" android:layout_width="wrap_content" android:layout_height="wrap_content">
                     <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fees Remaining :" android:layout_centerVertical="true" />
                     <TextView android:textSize="12.0sp" android:textColor="@color/colorAccent" android:id="@+id/list_PackageAmountRemaining" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 500 " android:layout_centerVertical="true" android:layout_marginStart="35.0dip" android:layout_marginLeft="35.0dip" />
+                </LinearLayout>
+                <LinearLayout android:visibility="gone" android:orientation="horizontal" android:id="@+id/paymentDetailsLayout" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="20dp" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Payment Date :" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/colorAccent" android:id="@+id/list_PackagePaymentDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 500 " android:layout_centerVertical="true" android:layout_marginStart="35.0dip" android:layout_marginLeft="35.0dip" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -44,6 +48,7 @@
                 <Button android:textSize="10.0sp" android:id="@+id/list_payFeesButton" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="PAY" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" style="@style/Widget.AppCompat.Button.Colored" />
                 <Button android:textSize="10.0sp" android:id="@+id/list_SendSmsRemainderButton" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="SEND REMAINDER" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" style="@style/Widget.AppCompat.Button.Colored" />
                 <Button android:textSize="10.0sp" android:id="@+id/list_UpdatePackageButton" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="UPDATE PACKAGE" android:layout_marginStart="5.0dip" android:layout_marginLeft="5.0dip" style="@style/Widget.AppCompat.Button.Colored" />
+                <ImageView android:visibility="gone" android:id="@+id/paidFullImage" android:layout_width="80dp" android:layout_height="90dp" android:src="@drawable/paid"/>
             </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>

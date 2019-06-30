@@ -63,7 +63,7 @@ public class ViewClientProfile extends AppCompatActivity implements View.OnClick
             listRecyclerView = (RecyclerView)findViewById(R.id.viewClientProfile_recyclerview);
             listRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));// for
             listRecyclerView.setHasFixedSize(true);
-            adapter = new ViewClientPageAdapter(this, client.getPackageDetails());
+            adapter = new ViewClientPageAdapter(this, DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().packageDetailsDao().getPackageDetailsByClientId(clientId));
             listRecyclerView.setAdapter(adapter);// set adapter on recyclerview
             adapter.notifyDataSetChanged();
         }

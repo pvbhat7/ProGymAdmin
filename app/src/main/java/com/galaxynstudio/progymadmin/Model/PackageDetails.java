@@ -3,30 +3,52 @@ package com.galaxynstudio.progymadmin.Model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.util.Date;
 
-@Entity(tableName = "packageDetails")
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity(foreignKeys = @ForeignKey(entity = Client.class,
+        parentColumns = "id",
+        childColumns = "cliendId",
+        onDelete = CASCADE))
 public class PackageDetails {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    private Integer packageDetailsid;
+    @ColumnInfo(index =true)
+    private int id;
 
     @ColumnInfo(name = "startDate")
     String startDate;
 
-
     @Embedded
-    CPackage cPackage;
+    public CPackage cPackage;
 
     @ColumnInfo(name = "status")
     String status;
 
     @ColumnInfo(name = "amountPaid")
     Double amountPaid;
+
+    @ColumnInfo(name="cliendId")
+    public int cliendId;
+
+
+
+
+
+    public int getCliendId() {
+        return cliendId;
+    }
+
+    public void setCliendId(int cliendId) {
+        this.cliendId = cliendId;
+    }
 
     public Double getAmountPaid() {
         return amountPaid;
@@ -36,8 +58,12 @@ public class PackageDetails {
         this.amountPaid = amountPaid;
     }
 
-    public void setPackageDetailsid(int packageDetailsid) {
-        this.packageDetailsid = packageDetailsid;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setStartDate(String startDate) {
@@ -53,9 +79,6 @@ public class PackageDetails {
         this.status = status;
     }
 
-    public int getPackageDetailsid() {
-        return packageDetailsid;
-    }
 
     public String getStartDate() {
         return startDate;

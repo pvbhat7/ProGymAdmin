@@ -13,7 +13,7 @@ import java.util.List;
 public interface ClientDao {
 
     @Insert
-    void insert(Client client);
+    Long insert(Client client);
 
     @Query("SELECT * FROM client")
     List<Client> getAllClients();
@@ -21,11 +21,6 @@ public interface ClientDao {
     @Query("SELECT * FROM client where id = :id")
     Client getClient(Integer id);
 
-    @Query("UPDATE client SET packageDetails = :packageDetails where id = :id")
-    void updateClient(Integer id, List<PackageDetails> packageDetails);
-
-    @Query("SELECT packageDetails FROM client where id = :clientId")
-    String  getClientPackageDetailsById(Integer clientId);
 
 
 

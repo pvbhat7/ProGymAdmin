@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import com.galaxynstudio.progymadmin.Dao.DatabaseClient;
 import com.galaxynstudio.progymadmin.Model.Client;
+import com.galaxynstudio.progymadmin.Model.PackageDetails;
 import com.galaxynstudio.progymadmin.R;
 import com.galaxynstudio.progymadmin.SharedPrefManager;
 import com.galaxynstudio.progymadmin.Utils.Utils;
@@ -36,12 +38,7 @@ public class ViewClientAdapter extends
     private List<Client> clientList;
     private Context context;
 
-    private Button btn_add, img_add, img_remove;
-    private TextView item_count;
-    private Boolean isProductExist;
-    private Integer productQty;
-    private Double cartTotal=0.0;
-    private ImageView imageView;
+
 
 
     public ViewClientAdapter(Context context,
@@ -65,31 +62,36 @@ public class ViewClientAdapter extends
         final ViewClientHolder holder = (ViewClientHolder) viewClientHolder;
 
         holder.clientNameList.setText(client.getName());
-        String packageName=client.getPackageDetails().get(client.getPackageDetails().size()-1).getcPackage().getPackageName();
-        holder.clientPackageList.setText(packageName);
-        String startdate=client.getPackageDetails().get(client.getPackageDetails().size()-1).getStartDate();
-        holder.clientPackageStartdate.setText(startdate);
         if(client.getName().equals("Prashant Bhat"))
-        holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.prashant));
+            holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.prashant));
         else if(client.getName().equals("Pranav Patil"))
-        holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.pranav));
+            holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.pranav));
         else if(client.getName().equals("Sujay Bhosale"))
-        holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.sujay));
+            holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.sujay));
         else
             holder.image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_person));
+        List<PackageDetails> packageDetailsList=DatabaseClient.getInstance(context).getAppDatabase().packageDetailsDao().getPackageDetailsByClientId(client.getId());
 
+        if(packageDetailsList.size() > 0){
+            String packageName=(packageDetailsList.get(packageDetailsList.size()-1).getcPackage().getPackageName());
+            holder.clientPackageList.setText(packageName);
+            String startdate=(packageDetailsList.get(packageDetailsList.size()-1).getStartDate());
+            holder.clientPackageStartdate.setText(startdate);
 
+            int days=Utils.getDaysRemaining(startdate,packageName);
+            if(days > 0)
+                holder.clientPackageDaysLeft.setText(String.valueOf(days));
+            else
+                holder.clientPackageDaysLeft.setText(String.valueOf(Math.abs(days))+" days extra");
 
+            holder.clientFeesStatus.setText((packageDetailsList.get(packageDetailsList.size()-1).getStatus()));
+        }else
+        {
+            holder.pkg_notFound.setVisibility(View.VISIBLE);
+            holder.pkg_details.setVisibility(View.GONE);
+            holder.fee_status.setVisibility(View.GONE);
+        }
 
-
-        int days=Utils.getDaysRemaining(startdate,packageName);
-        if(days > 0)
-            holder.clientPackageDaysLeft.setText(String.valueOf(days));
-        else
-            holder.clientPackageDaysLeft.setText(String.valueOf(Math.abs(days))+" days extra");
-
-
-        holder.clientFeesStatus.setText(client.getPackageDetails().get(client.getPackageDetails().size()-1).getStatus());
 
         //Glide.with(context).load(model.getImage()).into(holder.image);
 
